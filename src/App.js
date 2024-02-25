@@ -26,6 +26,9 @@ function App() {
   return (
     <div className="app-container">
       <header>
+        <h1>
+          Hack Club Bank
+        </h1>
         <input
           type="text"
           placeholder="Search..."

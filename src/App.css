@@ -3,7 +3,18 @@
 }
 
 header {
+  margin-top: 0;
   margin-bottom: 20px; /* Adds some space below the header */
+  background-color: #ec3750;
+  height: 200px;
+}
+
+body{
+  background-color: #252429;;
+}
+
+header input::placeholder{
+  color: white;
 }
 
 input[type="text"] {
@@ -11,6 +22,12 @@ input[type="text"] {
   padding: 10px; /* Padding inside the search bar */
   margin-top: 20px; /* Adds some space above the search bar */
   font-size: 16px; /* Increases the font size in the search bar */
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ec3750;
+  border-radius: 30px;
+  border-color: black;
+  border-top-color: black;
+  border-bottom-color: black;
 }
 
 .grid-container {
@@ -23,7 +40,7 @@ input[type="text"] {
 }
 
 .grid-item {
-  background-color: #f0f0f0; /* Light grey background */
+  background-color: #ffffff; /* Light grey background */
   display: flex;
   justify-content: center;
   align-items: center;
