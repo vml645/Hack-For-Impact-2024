@@ -9,6 +9,7 @@ header {
   height: 200px;
 }
 
+
 body{
   background-color: #252429;;
 }
@@ -45,6 +46,8 @@ input[type="text"] {
   justify-content: center;
   align-items: center;
   height: 300px; /* Sets the height of the boxes */
+  border-radius: 30px;
+
 }
 
 .grid-item img {

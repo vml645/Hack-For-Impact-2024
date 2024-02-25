@@ -25,17 +25,17 @@ function App() {
 
   return (
     <div className="app-container">
-      <header>
-        <h1>
-          Hack Club Bank
-        </h1>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
-      </header>
+        <header>
+          <h1>
+            Hack Club Bank
+          </h1>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </header>
       <div className="grid-container">
         {filteredImages.map((imageName, index) => (
           <div key={index} className="grid-item">
