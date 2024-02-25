@@ -1,23 +1,40 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const graphImages = [
+    'graph1.jpg',
+    'graph2.jpg',
+    'graph3.jpg',
+    'graph4.jpg',
+    'graph5.jpg',
+    'graph6.jpg',
+  ];
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app-container">
+      <header>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
       </header>
+      <div className="grid-container">
+        {graphImages.map((imageName, index) => (
+          <div key={index} className="grid-item">
+            <img src={`${process.env.PUBLIC_URL}/${imageName}`} alt={`Graph ${index + 1}`} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

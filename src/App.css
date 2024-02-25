@@ -1,38 +1,36 @@
-.App {
-  text-align: center;
+.app-container {
+  text-align: center; /* Center aligns the content */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  margin-bottom: 20px; /* Adds some space below the header */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input[type="text"] {
+  width: 300px; /* Width of the search bar */
+  padding: 10px; /* Padding inside the search bar */
+  margin-top: 20px; /* Adds some space above the search bar */
+  font-size: 16px; /* Increases the font size in the search bar */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates a 3-column grid */
+  gap: 10px; /* Adjusts space between boxes */
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: auto;
+  max-width: 600px; /* Maximum width of the grid */
 }
 
-.App-link {
-  color: #61dafb;
+.grid-item {
+  background-color: #f0f0f0; /* Light grey background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Sets the height of the boxes */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.grid-item img {
+  max-width: 100%;
+  max-height: 100%;
 }
