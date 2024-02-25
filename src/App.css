@@ -19,7 +19,7 @@ input[type="text"] {
   gap: 10px; /* Adjusts space between boxes */
   justify-content: center;
   margin: auto;
-  max-width: 600px; /* Maximum width of the grid */
+  max-width: 800px; /* Maximum width of the grid */
 }
 
 .grid-item {
@@ -27,7 +27,7 @@ input[type="text"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px; /* Sets the height of the boxes */
+  height: 300px; /* Sets the height of the boxes */
 }
 
 .grid-item img {
