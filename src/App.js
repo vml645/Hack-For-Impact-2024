@@ -1,6 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
 import React, { useState } from 'react';
+import logo from './logo.svg'; // Assuming this is not used, but keeping it if you need it elsewhere
+import './App.css';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -18,6 +18,11 @@ function App() {
     setSearchTerm(event.target.value);
   };
 
+  // Filter graphImages based on searchTerm
+  const filteredImages = graphImages.filter(imageName =>
+    imageName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="app-container">
       <header>
@@ -29,7 +34,7 @@ function App() {
         />
       </header>
       <div className="grid-container">
-        {graphImages.map((imageName, index) => (
+        {filteredImages.map((imageName, index) => (
           <div key={index} className="grid-item">
             <img src={`${process.env.PUBLIC_URL}/${imageName}`} alt={`Graph ${index + 1}`} />
           </div>
