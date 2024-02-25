@@ -19,7 +19,7 @@ input[type="text"] {
   gap: 10px; /* Adjusts space between boxes */
   justify-content: center;
   margin: auto;
-  max-width: 800px; /* Maximum width of the grid */
+  max-width: 1200px; /* Maximum width of the grid */
 }
 
 .grid-item {
