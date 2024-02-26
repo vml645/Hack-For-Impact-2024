@@ -3,10 +3,13 @@
 }
 
 header {
-  margin-top: 0;
-  margin-bottom: 20px; /* Adds some space below the header */
+  margin-top: 0px;
+  margin-bottom: 0px;
   background-color: #ec3750;
   height: 200px;
+  font-size: 30px;
+  padding-top: 0px; /* Adjust this value as needed to move the title down */
+  box-sizing: border-box; /* This ensures that padding is included in the height */
 }
 
 
@@ -19,10 +22,10 @@ header input::placeholder{
 }
 
 input[type="text"] {
-  width: 300px; /* Width of the search bar */
+  width: 700px; /* Width of the search bar */
   padding: 10px; /* Padding inside the search bar */
-  margin-top: 20px; /* Adds some space above the search bar */
-  font-size: 16px; /* Increases the font size in the search bar */
+  margin-top: 0px; /* Adds some space above the search bar */
+  font-size: 20px; /* Increases the font size in the search bar */
   font-family: Arial, Helvetica, sans-serif;
   background-color: #ec3750;
   border-radius: 30px;
@@ -31,23 +34,35 @@ input[type="text"] {
   border-bottom-color: black;
 }
 
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Creates a 3-column grid */
   gap: 10px; /* Adjusts space between boxes */
   justify-content: center;
   margin: auto;
+  margin-top: 30px; 
   max-width: 1200px; /* Maximum width of the grid */
 }
 
 .grid-item {
-  background-color: #ffffff; /* Light grey background */
+  background-color: #ffffff;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px; /* Sets the height of the boxes */
+  flex-direction: column;
+  justify-content: center; /* Aligns children vertically in the center */
+  align-items: center; /* Aligns children horizontally in the center */
+  height: 150px;
+  font-size: 30px;
   border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  padding: 20px;
+  transition: transform 0.2s ease;
+  width: 100%; /* Ensure the button width fills the container */
+}
 
+.grid-item:hover {
+  transform: scale(1.03); /* Enlarge the button by 5% on hover */
 }
 
 .grid-item img {

@@ -1,48 +1,74 @@
-import React, { useState } from 'react';
-import logo from './logo.svg'; 
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Popup from './Popup'; // Assuming this is the popup component you've created
+import './App.css'; // Your CSS file for styling
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [organizations, setOrganizations] = useState([]);
+  const [activeTransactions, setActiveTransactions] = useState(null);
 
-  const graphImages = [
-    'graph1.jpg',
-    'graph2.jpg',
-    'graph3.jpg',
-    'graph4.jpg',
-    'graph5.jpg',
-    'graph6.jpg',
-  ];
+  useEffect(() => {
+    axios.get('https://hcb.hackclub.com/api/v3/organizations', {
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      setOrganizations(response.data); // Assuming the API returns an array of organizations
+    })
+    .catch(error => {
+      console.error('Error fetching organizations:', error);
+    });
+  }, []);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  // Filter graphImages based on searchTerm
-  const filteredImages = graphImages.filter(imageName =>
-    imageName.toLowerCase().includes(searchTerm.toLowerCase())
+  const handleBoxClick = (organizationId) => {
+    axios.get(`https://hcb.hackclub.com/api/v3/organizations/${organizationId}/transactions`, {
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      console.log(response.data);
+      setActiveTransactions(response.data); // Assuming the API returns transactions
+    })
+    .catch(error => {
+      console.error('Error fetching transactions:', error);
+    });
+  };
+
+  const handleClosePopup = () => {
+    setActiveTransactions(null);
+  };
+
+  // Filter organizations based on searchTerm
+  const filteredOrganizations = organizations.filter(org =>
+    org.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="app-container">
-        <header>
-          <h1>
-            Hack Club Bank
-          </h1>
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={handleSearchChange}
-          />
-        </header>
+      <header>
+        <h1>Hack Club Bank</h1>
+        <input
+          type="text"
+          placeholder="Companies..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+      </header>
       <div className="grid-container">
-        {filteredImages.map((imageName, index) => (
-          <div key={index} className="grid-item">
-            <img src={`${process.env.PUBLIC_URL}/${imageName}`} alt={`Graph ${index + 1}`} />
-          </div>
+        {filteredOrganizations.map((org, index) => (
+          <button key={index} className="grid-item" onClick={() => handleBoxClick(org.id)}>
+            <div className="org-name">{org.name}</div>
+          </button>
         ))}
       </div>
+      {activeTransactions && (
+        <Popup transactions={activeTransactions} onClose={handleClosePopup} />
+      )}
     </div>
   );
 }
